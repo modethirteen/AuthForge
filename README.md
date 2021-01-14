@@ -1,6 +1,6 @@
 # AuthForge
 
-A collection of components to integrate industry-standard authentication and authorization
+A collection of PHP components to integrate industry-standard authentication and authorization
 
 [![github.com](https://github.com/modethirteen/AuthForge/workflows/build/badge.svg)](https://github.com/modethirteen/AuthForge/actions?query=workflow%3Abuild)
 [![codecov.io](https://codecov.io/github/modethirteen/AuthForge/coverage.svg?branch=main)](https://codecov.io/github/modethirteen/AuthForge?branch=main)
