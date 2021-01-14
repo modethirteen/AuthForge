@@ -1,0 +1,15 @@
+parameters:
+    bootstrapFiles:
+        - %currentWorkingDirectory%/_bootstrap.php
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - message: '#Else branch is unreachable because ternary operator condition is always true#'
+          path: %currentWorkingDirectory%/src/Common/Utility/DateTimeImmutableEx.php
+        - message: '#XMLSecurityKey::loadKey\(\) expects string, DOMElement\|string given#'
+          path: %currentWorkingDirectory%/src/ServiceProvider/Saml/DocumentFactory.php
+        - message: '#Part .+? \(DOMElement\|string\) of encapsed string cannot be cast to string#'
+          path: %currentWorkingDirectory%/src/ServiceProvider/Saml/Http/AbstractHttpMessage.php
+    level: 7
+    paths:
+        - src

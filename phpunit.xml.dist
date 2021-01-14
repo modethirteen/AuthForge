@@ -1,0 +1,13 @@
+<phpunit bootstrap="_bootstrap.php" backupGlobals="false" processIsolation="false">
+    <testsuite name="Tests">
+        <directory>tests</directory>
+    </testsuite>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <listeners>
+        <listener class="modethirteen\AuthForge\Tests\FailureListener" />
+    </listeners>
+</phpunit>
