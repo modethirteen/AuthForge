@@ -26,7 +26,7 @@ abstract class AbstractEvent extends Event implements StoppableEventInterface {
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @param DateTimeInterface $dateTime

@@ -71,37 +71,37 @@ class OAuthFlowService implements AuthFlowServiceInterface {
     /**
      * @var EventDispatcherInterface
      */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var OAuthMiddlewareServiceInterface
      */
-    private $middlewareService;
+    private OAuthMiddlewareServiceInterface $middlewareService;
 
     /**
      * @var OAuthConfigurationInterface
      */
-    private $oauth;
+    private OAuthConfigurationInterface $oauth;
 
     /**
      * @var MutableXArray
      */
-    private $sessionStorage;
+    private MutableXArray $sessionStorage;
 
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @var UuidFactoryInterface
      */
-    private $uuidFactory;
+    private UuidFactoryInterface $uuidFactory;
 
     public function __construct(
         OAuthConfigurationInterface $oauth,

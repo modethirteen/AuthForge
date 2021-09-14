@@ -1,6 +1,4 @@
-<?php
-/** @noinspection DuplicatedCode */
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * AuthForge
  *
@@ -45,8 +43,9 @@ use modethirteen\Http\QueryParams;
 use modethirteen\Http\Result;
 use modethirteen\Http\XUri;
 use modethirteen\TypeEx\Exception\InvalidDictionaryValueException;
-use modethirteen\XArray\JsonArray;
 use modethirteen\XArray\MutableXArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactoryInterface;
@@ -141,7 +140,7 @@ class LocalJsonWebKeysTest extends AbstractOAuthTestCase {
             ->willReturn($issuer);
         $oidc->expects(static::atLeastOnce())
             ->method('getIdentityProviderJsonWebKeySet')
-            ->willReturn((new JsonArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->toJson());
+            ->willReturn((new XArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->withSerializer(new JsonSerializer())->toString());
 
         // bootstrap service
         /** @var OAuthConfigurationInterface $oauth */

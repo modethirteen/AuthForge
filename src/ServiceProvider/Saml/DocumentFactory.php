@@ -33,7 +33,7 @@ class DocumentFactory implements DocumentFactoryInterface {
     /**
      * @var DocumentSchemaResolverInterface
      */
-    private $resolver;
+    private DocumentSchemaResolverInterface $resolver;
 
     public function __construct(DocumentSchemaResolverInterface $resolver) {
         $this->resolver = $resolver;

@@ -304,7 +304,7 @@ XML;
             /**
              * @var string
              */
-            private $directory;
+            private string $directory;
 
             /**
              * @param string $directory - schema collection root directory

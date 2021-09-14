@@ -25,7 +25,7 @@ class IssuerChecker implements ClaimChecker {
     /**
      * @var string
      */
-    private $issuer;
+    private string $issuer;
 
     /**
      * @param string $issuer

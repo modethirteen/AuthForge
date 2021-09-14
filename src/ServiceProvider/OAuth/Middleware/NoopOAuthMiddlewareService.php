@@ -20,7 +20,8 @@ use modethirteen\AuthForge\Common\Identity\AbstractClaims;
 use modethirteen\AuthForge\Common\Identity\ClaimsInterface;
 use modethirteen\Http\Result;
 use modethirteen\Http\XUri;
-use modethirteen\XArray\JsonArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 
 class NoopOAuthMiddlewareService implements OAuthMiddlewareServiceInterface {
 
@@ -32,7 +33,9 @@ class NoopOAuthMiddlewareService implements OAuthMiddlewareServiceInterface {
             }
 
             public function toJson() : string {
-                return (new JsonArray($this->toArray()))->toJson();
+                return (new XArray($this->toArray()))
+                    ->withSerializer(new JsonSerializer())
+                    ->toString();
             }
 
             public function toSecureArray() : array {

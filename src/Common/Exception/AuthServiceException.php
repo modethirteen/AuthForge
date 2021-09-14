@@ -23,7 +23,7 @@ class AuthServiceException extends AuthInterpolatedException {
     /**
      * @var Throwable
      */
-    private $exception;
+    private Throwable $exception;
 
     /**
      * {@inheritDoc}

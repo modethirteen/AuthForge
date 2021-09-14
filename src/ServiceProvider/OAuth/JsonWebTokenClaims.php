@@ -19,7 +19,8 @@ namespace modethirteen\AuthForge\ServiceProvider\OAuth;
 use modethirteen\AuthForge\Common\Identity\AbstractClaims;
 use modethirteen\AuthForge\Common\Identity\ClaimsInterface;
 use modethirteen\TypeEx\StringEx;
-use modethirteen\XArray\JsonArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 
 class JsonWebTokenClaims extends AbstractClaims implements ClaimsInterface {
 
@@ -45,7 +46,7 @@ class JsonWebTokenClaims extends AbstractClaims implements ClaimsInterface {
      *
      * @var string[]
      */
-    private static $registeredClaims = [
+    private static array $registeredClaims = [
         self::CLAIM_AUD,
         self::CLAIM_EXP,
         self::CLAIM_JTI,
@@ -61,7 +62,9 @@ class JsonWebTokenClaims extends AbstractClaims implements ClaimsInterface {
     }
 
     public function toJson() : string {
-        return (new JsonArray($this->toArray()))->toJson();
+        return (new XArray($this->toArray()))
+            ->withSerializer(new JsonSerializer())
+            ->toString();
     }
 
     public function toSecureArray() : array {
@@ -71,6 +74,8 @@ class JsonWebTokenClaims extends AbstractClaims implements ClaimsInterface {
     }
 
     public function toSecureJson() : string {
-        return (new JsonArray($this->toSecureArray()))->toJson();
+        return (new XArray($this->toSecureArray()))
+            ->withSerializer(new JsonSerializer())
+            ->toString();
     }
 }

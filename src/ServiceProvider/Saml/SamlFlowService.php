@@ -17,7 +17,6 @@
 namespace modethirteen\AuthForge\ServiceProvider\Saml;
 
 use DateTimeInterface;
-use MindTouch\XArray\MutableXArray;
 use modethirteen\AuthForge\Common\Exception\ServerRequestInterfaceParsedBodyException;
 use modethirteen\AuthForge\Common\Http\ServerRequestEx;
 use modethirteen\AuthForge\Common\Logger\ContextLoggerInterface;
@@ -47,6 +46,7 @@ use modethirteen\Http\Exception\MalformedUriException;
 use modethirteen\Http\XUri;
 use modethirteen\TypeEx\Exception\InvalidDictionaryValueException;
 use modethirteen\TypeEx\StringEx;
+use modethirteen\XArray\MutableXArray;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Ramsey\Uuid\UuidFactoryInterface;
 
@@ -56,27 +56,27 @@ class SamlFlowService implements AuthFlowServiceInterface {
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @var DocumentFactoryInterface
      */
-    private $documentFactory;
+    private DocumentFactoryInterface $documentFactory;
 
     /**
      * @var EventDispatcherInterface
      */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var SamlConfigurationInterface
      */
-    private $saml;
+    private SamlConfigurationInterface $saml;
 
     /**
      * @var SamlUriFactoryInterface

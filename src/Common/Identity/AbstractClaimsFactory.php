@@ -23,12 +23,12 @@ abstract class AbstractClaimsFactory {
     /**
      * @var string[]
      */
-    private $allowedClaims;
+    private array $allowedClaims;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @param string[] $allowedClaims - string list of allowed claim names

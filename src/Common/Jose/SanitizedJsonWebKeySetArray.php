@@ -17,9 +17,9 @@
 namespace modethirteen\AuthForge\Common\Jose;
 
 use Jose\Component\Core\JWKSet;
-use modethirteen\XArray\JsonArray;
+use modethirteen\XArray\XArray;
 
-class SanitizedJsonWebKeySetArray extends JsonArray {
+class SanitizedJsonWebKeySetArray extends XArray {
 
     /**
      * @param JWKSet $jwks

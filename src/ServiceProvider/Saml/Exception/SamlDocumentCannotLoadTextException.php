@@ -21,7 +21,7 @@ class SamlDocumentCannotLoadTextException extends SamlException {
     /**
      * @var string
      */
-    private $text;
+    private string $text;
 
     /**
      * @param string $text

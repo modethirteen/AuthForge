@@ -20,6 +20,7 @@ namespace modethirteen\AuthForge\Tests\ServiceProvider\Saml\SamlFlowService;
 
 use DateTimeImmutable;
 use modethirteen\AuthForge\Common\Logger\ContextLoggerInterface;
+use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlDocumentCannotWriteTextException;
 use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlFlowServiceException;
 use modethirteen\AuthForge\ServiceProvider\Saml\Http\HttpMessageInterface;
 use modethirteen\AuthForge\ServiceProvider\Saml\SamlConfigurationInterface;
@@ -88,6 +89,7 @@ TEXT
      * @throws MalformedUriException
      * @throws CryptoKeyFactoryCannotConstructCryptoKeyException
      * @throws CryptoKeyCannotParseCryptoKeyTextException
+     * @throws SamlDocumentCannotWriteTextException
      */
     public function Can_generate_login_uri(
         bool $isAuthnRequestSignatureRequired,

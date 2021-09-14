@@ -45,7 +45,7 @@ class RedirectLogoutRequestHttpMessage extends AbstractHttpMessage implements Ht
     /**
      * @var array|null
      */
-    private $nameIdData = null;
+    private ?array $nameIdData = null;
 
     /**
      * @return string

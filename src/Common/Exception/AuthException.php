@@ -23,7 +23,7 @@ class AuthException extends Exception {
     /**
      * @var array
      */
-    private $context;
+    private array $context;
 
     /**
      * @param string $message

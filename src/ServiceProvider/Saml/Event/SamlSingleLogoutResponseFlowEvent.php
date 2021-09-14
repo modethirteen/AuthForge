@@ -25,7 +25,7 @@ class SamlSingleLogoutResponseFlowEvent extends AbstractEvent  {
     /**
      * @var string
      */
-    private $status;
+    private string $status;
 
     /**
      * @param DateTimeInterface $dateTime

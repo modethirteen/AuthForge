@@ -1,6 +1,4 @@
-<?php
-/** @noinspection DuplicatedCode */
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * AuthForge
  *
@@ -48,8 +46,9 @@ use modethirteen\Http\QueryParams;
 use modethirteen\Http\Result;
 use modethirteen\Http\XUri;
 use modethirteen\TypeEx\Exception\InvalidDictionaryValueException;
-use modethirteen\XArray\JsonArray;
 use modethirteen\XArray\MutableXArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\SimpleCache\CacheInterface;
 use Ramsey\Uuid\Uuid;
@@ -201,7 +200,7 @@ class UserInfoTest extends AbstractOAuthTestCase {
             (new Result())
                 ->withStatus(200)
                 ->withBody(
-                    (new JsonArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->toJson()
+                    (new XArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->withSerializer(new JsonSerializer())->toString()
                 )
                 ->withHeaders(Headers::newFromHeaderNameValuePairs([
                     [Headers::HEADER_CONTENT_TYPE, ContentType::JSON]

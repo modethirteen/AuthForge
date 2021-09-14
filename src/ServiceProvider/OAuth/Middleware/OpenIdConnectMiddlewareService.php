@@ -100,27 +100,27 @@ class OpenIdConnectMiddlewareService implements OAuthMiddlewareServiceInterface 
     /**
      * @var OAuthConfigurationInterface
      */
-    private $oauth;
+    private OAuthConfigurationInterface $oauth;
 
     /**
      * @var JsonWebKeySetCachingInterface
      */
-    private $jsonWebKeySetCaching;
+    private JsonWebKeySetCachingInterface $jsonWebKeySetCaching;
 
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var OpenIdConnectConfigurationInterface
      */
-    private $oidc;
+    private OpenIdConnectConfigurationInterface $oidc;
 
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     public function __construct(
         OAuthConfigurationInterface $oauth,
@@ -356,7 +356,7 @@ class OpenIdConnectMiddlewareService implements OAuthMiddlewareServiceInterface 
             /** @var JWK[] $keys */
             $keys = [];
             $index = 1;
-            foreach($keysResult->getBody()->getAll('keys') as $data) {
+            foreach($keysResult->getBody()->getVal('keys') as $data) {
                 try {
                     $this->logger->debug("Parsing JSON web key (JWK) data item #{$index}...", [
                         'Data' => $data

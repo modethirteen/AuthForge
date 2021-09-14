@@ -40,27 +40,27 @@ class SamlUriFactory implements SamlUriFactoryInterface {
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var SamlConfigurationInterface
      */
-    private $saml;
+    private SamlConfigurationInterface $saml;
 
     /**
      * @var SessionIndexRegistryInterface
      */
-    private $sessionIndexRegistry;
+    private SessionIndexRegistryInterface $sessionIndexRegistry;
 
     /**
      * @var UuidFactoryInterface
      */
-    private $uuidFactory;
+    private UuidFactoryInterface $uuidFactory;
 
     public function __construct(
         SamlConfigurationInterface $saml,

@@ -23,12 +23,12 @@ class SamlCryptoKeyException extends SamlException {
     /**
      * @var string
      */
-    private $error;
+    private string $error;
 
     /**
      * @var CryptoKeyInterface
      */
-    private $key;
+    private CryptoKeyInterface $key;
 
     /**
      * @param string $message

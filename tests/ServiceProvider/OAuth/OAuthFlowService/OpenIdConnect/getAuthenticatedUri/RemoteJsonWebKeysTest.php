@@ -1,6 +1,4 @@
-<?php
-/** @noinspection DuplicatedCode */
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * AuthForge
  *
@@ -51,8 +49,9 @@ use modethirteen\Http\QueryParams;
 use modethirteen\Http\Result;
 use modethirteen\Http\XUri;
 use modethirteen\TypeEx\Exception\InvalidDictionaryValueException;
-use modethirteen\XArray\JsonArray;
 use modethirteen\XArray\MutableXArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\SimpleCache\CacheInterface;
 use Ramsey\Uuid\Uuid;
@@ -127,7 +126,7 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
                 (new Result())
                     ->withStatus(200)
                     ->withBody(
-                        (new JsonArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->toJson()
+                        (new XArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->withSerializer(new JsonSerializer())->toString()
                     ),
                 $remoteKeysContentType
             )),
@@ -135,12 +134,12 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
                 (new Result())
                     ->withStatus(200)
                     ->withBody(
-                        (new JsonArray((new JWKSet([
+                        (new XArray((new JWKSet([
                             JWKFactory::createRSAKey(4096, [
                                 'alg' => (new RS256())->name(),
                                 'use' => 'sig'
                             ])->toPublic()
-                        ]))->jsonSerialize()))->toJson()
+                        ]))->jsonSerialize()))->withSerializer(new JsonSerializer())->toString()
                     ),
                 $remoteKeysContentType
             )),
@@ -212,16 +211,13 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
         // cache for remote jwks
         $cache = $this->newMock(CacheInterface::class);
         if($remoteKeysResult instanceof Result) {
-            if($remoteKeysResult->getBody()->getVal('keys/n') !== $key->get('n')) {
+            if($remoteKeysResult->getBody()->getVal('keys/0/n') !== $key->get('n')) {
 
                 // key is cached, but expired
-                /** @noinspection PhpParamsInspection */
                 $cache->expects(static::exactly(2))
                     ->method('get')
                     ->with(static::equalTo('12345'))
                     ->willReturn($remoteKeysResult);
-
-                /** @noinspection PhpParamsInspection */
                 $cache->expects(static::once())
                     ->method('set')
                     ->with(
@@ -236,7 +232,6 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
             } else {
 
                 // valid key is cached
-                /** @noinspection PhpParamsInspection */
                 $cache->expects(static::once())
                     ->method('get')
                     ->with(static::equalTo('12345'))
@@ -245,20 +240,15 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
         } else {
 
             // cache miss or invalid object is cached
-            /** @noinspection PhpParamsInspection */
             $cache->expects(static::once())
                 ->method('get')
                 ->with(static::equalTo('12345'))
                 ->willReturn($remoteKeysResult);
             if($remoteKeysResult !== null) {
-
-                /** @noinspection PhpParamsInspection */
                 $cache->expects(static::once())
                     ->method('delete')
                     ->with(static::equalTo('12345'));
             }
-
-            /** @noinspection PhpParamsInspection */
             $cache->expects(static::once())
                 ->method('set')
                 ->with(
@@ -351,7 +341,7 @@ class RemoteJsonWebKeysTest extends AbstractOAuthTestCase {
             (new Result())
                 ->withStatus(200)
                 ->withBody(
-                    (new JsonArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->toJson()
+                    (new XArray((new JWKSet([$key->toPublic()]))->jsonSerialize()))->withSerializer(new JsonSerializer())->toString()
                 )
                 ->withHeaders(Headers::newFromHeaderNameValuePairs($remoteKeysHeaders)),
             false

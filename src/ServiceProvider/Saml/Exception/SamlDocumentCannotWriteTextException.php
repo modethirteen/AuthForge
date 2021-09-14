@@ -23,7 +23,7 @@ class SamlDocumentCannotWriteTextException extends SamlException {
     /**
      * @var Document
      */
-    private $document;
+    private Document $document;
 
     /**
      * @param Document $document

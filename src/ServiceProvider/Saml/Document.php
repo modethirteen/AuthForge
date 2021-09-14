@@ -47,12 +47,12 @@ class Document extends DOMDocument {
     /**
      * @var array<string, string>
      */
-    private $namespaces;
+    private array $namespaces;
 
     /**
      * @var string
      */
-    private $xsd;
+    private string $xsd;
 
     /**
      * @param string $xsd - xsd path for validation

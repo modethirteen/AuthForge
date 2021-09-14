@@ -26,7 +26,7 @@ class AbstractTestCase extends TestCase {
     /**
      * @var string|null - project root directory
      */
-    private static $directory = null;
+    private static ?string $directory = null;
 
     /**
      * @return string|null
@@ -42,7 +42,8 @@ class AbstractTestCase extends TestCase {
         self::$directory = $directory;
     }
 
-    public function setUp() {
+    public function setUp() : void {
+        parent::setUp();
         MockRequestMatcher::setIgnoredHeaderNames([
             Headers::HEADER_CONTENT_LENGTH
         ]);
@@ -54,7 +55,7 @@ class AbstractTestCase extends TestCase {
      */
     protected function newMock(string $class) : MockObject {
         return $this->getMockBuilder($class)
-            ->setMethods(get_class_methods($class))
+            ->onlyMethods(get_class_methods($class))
             ->disableOriginalConstructor()
             ->getMock();
     }

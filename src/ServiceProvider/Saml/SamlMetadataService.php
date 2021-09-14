@@ -37,22 +37,22 @@ class SamlMetadataService implements SamlMetadataServiceInterface {
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @var DocumentFactoryInterface
      */
-    private $documentFactory;
+    private DocumentFactoryInterface $documentFactory;
 
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var SamlConfigurationInterface
      */
-    private $saml;
+    private SamlConfigurationInterface $saml;
 
     public function __construct(
         SamlConfigurationInterface $saml,

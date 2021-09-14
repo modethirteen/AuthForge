@@ -31,17 +31,17 @@ class ServerRequestEx {
     /**
      * @var XArray|null
      */
-    private $body = null;
+    private ?XArray $body = null;
 
     /**
      * @var Closure
      */
-    private $bodyParser;
+    private Closure $bodyParser;
 
     /**
      * @var ServerRequestInterface
      */
-    private $instance;
+    private ServerRequestInterface $instance;
 
     /**
      * @note ServerRequestInterface doesn't really help us understand if this is a application/x-www-form-urlencoded body, so a callback will ensure it is serialized to an array type

@@ -52,22 +52,22 @@ abstract class AbstractAuthnResponseHttpMessage extends AbstractHttpMessage impl
     /**
      * @var DateTimeInterface
      */
-    protected $dateTime;
+    protected DateTimeInterface $dateTime;
 
     /**
      * @var Document|null
      */
-    protected $decryptedDocument = null;
+    protected ?Document $decryptedDocument = null;
 
     /**
      * @var array|null
      */
-    private $nameIdData = null;
+    private ?array $nameIdData = null;
 
     /**
      * @var array|null
      */
-    private $statusData = null;
+    private ?array $statusData = null;
 
     /**
      * {@inheritDoc}

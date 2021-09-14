@@ -67,27 +67,27 @@ abstract class AbstractHttpMessage implements HttpMessageInterface  {
     /**
      * @var Document
      */
-    protected $document;
+    protected Document $document;
 
     /**
      * @var DocumentFactoryInterface
      */
-    protected $documentFactory;
+    protected DocumentFactoryInterface $documentFactory;
 
     /**
      * @var string
      */
-    protected $message;
+    protected string $message;
 
     /**
      * @var ServerRequestEx
      */
-    protected $request;
+    protected ServerRequestEx $request;
 
     /**
      * @var SamlConfigurationInterface
      */
-    protected $saml;
+    protected SamlConfigurationInterface $saml;
 
     /**
      * @param SamlConfigurationInterface $saml

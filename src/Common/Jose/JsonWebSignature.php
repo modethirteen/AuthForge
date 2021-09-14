@@ -29,17 +29,17 @@ class JsonWebSignature {
     /**
      * @var Algorithm
      */
-    private $algo;
+    private Algorithm $algo;
 
     /**
      * @var ClaimsInterface
      */
-    private $claims;
+    private ClaimsInterface $claims;
 
     /**
      * @var JWK
      */
-    private $key;
+    private JWK $key;
 
     public function __construct(ClaimsInterface $claims, JWK $key, Algorithm $algo) {
         $this->claims = $claims;

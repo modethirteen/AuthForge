@@ -18,21 +18,24 @@ namespace modethirteen\AuthForge\ServiceProvider\Saml;
 
 use modethirteen\AuthForge\Common\Identity\AbstractClaims;
 use modethirteen\AuthForge\Common\Identity\ClaimsInterface;
-use modethirteen\XArray\JsonArray;
+use modethirteen\XArray\Serialization\JsonSerializer;
+use modethirteen\XArray\XArray;
 
 class AssertionAttributeClaims extends AbstractClaims implements ClaimsInterface {
 
     /**
      * @var string|null
      */
-    private $username = null;
+    private ?string $username = null;
 
     public function getUsername() : ?string {
         return $this->username;
     }
 
     public function toJson() : string {
-        return (new JsonArray($this->toArray()))->toJson();
+        return (new XArray($this->toArray()))
+            ->withSerializer(new JsonSerializer())
+            ->toString();
     }
 
     public function toSecureArray() : array {
@@ -41,8 +44,10 @@ class AssertionAttributeClaims extends AbstractClaims implements ClaimsInterface
         return $this->toArray();
     }
 
-    public function toSecureJson(bool $prettyPrint = false) : string {
-        return (new JsonArray($this->toSecureArray()))->toJson();
+    public function toSecureJson() : string {
+        return (new XArray($this->toSecureArray()))
+            ->withSerializer(new JsonSerializer())
+            ->toString();
     }
 
     public function toArray() : array {

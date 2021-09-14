@@ -21,6 +21,7 @@ use modethirteen\AuthForge\Common\Logger\ContextLoggerInterface;
 use modethirteen\AuthForge\ServiceProvider\Saml\Document;
 use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlCannotGenerateSignatureException;
 use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlCannotLoadCryptoKeyException;
+use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlDocumentCannotWriteTextException;
 use modethirteen\AuthForge\ServiceProvider\Saml\Exception\SamlFlowServiceException;
 use modethirteen\AuthForge\ServiceProvider\Saml\Http\HttpMessageInterface;
 use modethirteen\AuthForge\ServiceProvider\Saml\Http\SamlHttpMessageUri;
@@ -336,6 +337,7 @@ XML
      * @throws SamlCannotGenerateSignatureException
      * @throws SamlCannotLoadCryptoKeyException
      * @throws MalformedPathQueryFragmentException
+     * @throws SamlDocumentCannotWriteTextException
      */
     public function Can_generate_logout_uri(
         bool $isLogoutRequestSignatureRequired,
@@ -357,8 +359,6 @@ XML
             ->method('uuid4')
             ->willReturn($uuid);
         $sessionIndexRegistry = $this->newMock(SessionIndexRegistryInterface::class);
-
-        /** @noinspection PhpParamsInspection */
         $sessionIndexRegistry->expects(static::atLeastOnce())
             ->method('getSessionIndex')
             ->with(static::equalTo('_ce3d2948b4cf20146dee0a0b3dd6f69b6cf86f62d7'))

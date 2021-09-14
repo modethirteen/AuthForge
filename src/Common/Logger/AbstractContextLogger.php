@@ -17,8 +17,8 @@
 namespace modethirteen\AuthForge\Common\Logger;
 
 use Closure;
-use MindTouch\XArray\MutableXArray;
 use modethirteen\AuthForge\Common\Utility\ArrayEx;
+use modethirteen\XArray\MutableXArray;
 use Psr\Log\AbstractLogger;
 
 abstract class AbstractContextLogger extends AbstractLogger implements ContextLoggerInterface {

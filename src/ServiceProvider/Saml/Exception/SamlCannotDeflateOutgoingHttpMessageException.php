@@ -21,7 +21,7 @@ class SamlCannotDeflateOutgoingHttpMessageException extends SamlException {
     /**
      * @var string
      */
-    private $data;
+    private string $data;
 
     /**
      * @param string $data

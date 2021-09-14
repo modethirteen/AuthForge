@@ -21,7 +21,7 @@ class SamlDocumentSchemaValidationException extends SamlException {
     /**
      * @var string[]
      */
-    private $errors;
+    private array $errors;
 
     /**
      * @param string[] $errors

@@ -31,12 +31,12 @@ class JsonWebKeySetCaching implements JsonWebKeySetCachingInterface {
     /**
      * @var CacheInterface
      */
-    private $cache;
+    private CacheInterface $cache;
 
     /**
      * @var Closure
      */
-    private $cacheKeyBuilder;
+    private Closure $cacheKeyBuilder;
 
     /**
      * @param CacheInterface $cache

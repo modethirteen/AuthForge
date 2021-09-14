@@ -26,12 +26,12 @@ class SamlCertificateService implements SamlCertificateServiceInterface {
     /**
      * @var ContextLoggerInterface
      */
-    private $logger;
+    private ContextLoggerInterface $logger;
 
     /**
      * @var SamlConfigurationInterface
      */
-    private $saml;
+    private SamlConfigurationInterface $saml;
 
     public function __construct(
         SamlConfigurationInterface $saml,

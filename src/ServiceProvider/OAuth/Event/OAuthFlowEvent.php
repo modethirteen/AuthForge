@@ -28,7 +28,7 @@ class OAuthFlowEvent extends AbstractEvent  {
     /**
      * @var ClaimsInterface
      */
-    private $claims;
+    private ClaimsInterface $claims;
 
     /**
      * @var string
@@ -38,7 +38,7 @@ class OAuthFlowEvent extends AbstractEvent  {
     /**
      * @var Result
      */
-    private $tokenResult;
+    private Result $tokenResult;
 
     /**
      * @param DateTimeInterface $dateTime

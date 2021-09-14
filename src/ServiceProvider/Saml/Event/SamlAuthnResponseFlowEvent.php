@@ -26,12 +26,12 @@ class SamlAuthnResponseFlowEvent extends AbstractEvent  {
     /**
      * @var ClaimsInterface
      */
-    private $claims;
+    private ClaimsInterface $claims;
 
     /**
      * @var string
      */
-    private $sessionIndex;
+    private string $sessionIndex;
 
     /**
      * @param DateTimeInterface $dateTime

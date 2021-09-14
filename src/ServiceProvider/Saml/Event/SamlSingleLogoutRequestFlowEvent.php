@@ -25,12 +25,12 @@ class SamlSingleLogoutRequestFlowEvent extends AbstractEvent  {
     /**
      * @var string
      */
-    private $username;
+    private string $username;
 
     /**
      * @var string[]
      */
-    private $sessionIndexes;
+    private array $sessionIndexes;
 
     /**
      * @param DateTimeInterface $dateTime

@@ -26,12 +26,12 @@ class ExpirationTimeChecker implements ClaimChecker {
     /**
      * @var int
      */
-    private $allowedTimeDrift;
+    private int $allowedTimeDrift;
 
     /**
      * @var DateTimeInterface
      */
-    private $dateTime;
+    private DateTimeInterface $dateTime;
 
     /**
      * @param DateTimeInterface $dateTime
