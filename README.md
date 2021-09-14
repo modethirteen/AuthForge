@@ -7,7 +7,7 @@ A collection of PHP components to integrate industry-standard authentication and
 [![Latest Stable Version](https://poser.pugx.org/modethirteen/authforge/version.svg)](https://packagist.org/packages/modethirteen/authforge)
 [![Latest Unstable Version](https://poser.pugx.org/modethirteen/authforge/v/unstable)](https://packagist.org/packages/modethirteen/authforge)
 
-* PHP 7.2, 7.3, 7.4 (main, 1.x)
+* PHP 7.4 (main, 2.x)
 
 ## Installation
 
