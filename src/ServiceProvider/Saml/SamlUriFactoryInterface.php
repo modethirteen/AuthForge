@@ -24,7 +24,7 @@ interface SamlUriFactoryInterface {
      * @param XUri $returnUri
      * @return XUri
      */
-    public function newAuthnRequestUri(XUri $returnUri) : XUri;
+    public function newAuthnRequestUri(XUri $returnUri, bool $sha512EncryptionEnabled = false) : XUri;
 
     /**
      * @param string $username

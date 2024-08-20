@@ -209,9 +209,9 @@ class SamlFlowService implements AuthFlowServiceInterface {
      * {@inheritDoc}
      * @throws SamlFlowServiceException
      */
-    public function getLoginUri(XUri $returnUri) : XUri {
+    public function getLoginUri(XUri $returnUri, bool $sha512EncryptionEnabled = false) : XUri {
         try {
-            return $this->uriFactory->newAuthnRequestUri($returnUri);
+            return $this->uriFactory->newAuthnRequestUri($returnUri, $sha512EncryptionEnabled);
         } catch(
             SamlCannotDeflateOutgoingHttpMessageException |
             SamlCannotGenerateSignatureException |
